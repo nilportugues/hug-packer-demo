@@ -1,0 +1,34 @@
+---
+- name: Demo app provisioning
+  hosts: all
+
+  remote_user: ubuntu
+  become: yes
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    owner: deploy
+
+  pre_tasks:
+    - name: Add PHP repo
+      apt_repository:
+        repo: "ppa:ondrej/php"
+        state: present
+        update_cache: yes
+
+
+  roles:
+    - role: geerlingguy.php
+      php_version: 7.1
+      php_enable_php_fpm: false
+      php_enable_webserver: false
+
+    - role: geerlingguy.php-xdebug
+      php_xdebug_remote_enable: "true"
+      php_xdebug_remote_connect_back: "false"
+      php_xdebug_remote_host: localhost
+      php_xdebug_remote_port: "9000"
+      php_xdebug_remote_autostart: "true"
+      php_xdebug_idekey: docker
+
+    - role: geerlingguy.composer

@@ -1,0 +1,13 @@
+{
+
+  "ansible_playbook": "../provisioners/ansible/playbooks/php.yml",
+  "docker_image": "viscat/packer-demo",
+  "docker_image_tag": "php",
+  "docker_base_image": "viscat/php:essential",
+
+
+  "iso_url": "http://releases.ubuntu.com/xenial/ubuntu-16.04.3-server-amd64.iso",
+  "iso_checksum": "10fcd20619dce11fe094e960c85ba4a9",
+  "preseed_url": "/ubuntu-16.04/preseed.cfg",
+  "output_directory": "packer-ubuntu1604"
+}

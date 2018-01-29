@@ -1,0 +1,30 @@
+---
+- name: Demo app provisioning
+  hosts: all
+
+  remote_user: ubuntu
+  become: yes
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    owner: deploy
+
+  pre_tasks:
+    - name: Adding Apache repo
+      apt_repository:
+        repo: "ppa:ondrej/apache2"
+        state: present
+        update_cache: yes
+
+    - name: Ensure all apache folders are created
+      file:
+        name: "/var/www/{{ item }}"
+        state: directory
+        owner: "{{ owner }}"
+        group: www-data
+        mode: 0775
+      with_items:
+        - app
+
+  roles:
+    - role: geerlingguy.apache

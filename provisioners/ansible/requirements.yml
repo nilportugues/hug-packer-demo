@@ -1,0 +1,15 @@
+---
+- src: geerlingguy.php
+  version: 3.5.0
+
+- src: geerlingguy.apache
+  version: 2.1.1
+
+- src: geerlingguy.php-xdebug
+  version: 2.4.0
+
+- src: geerlingguy.composer
+  version: 1.6.1
+
+- src: geerlingguy.nodejs
+  version: 4.1.0
