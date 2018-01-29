@@ -1,4 +1,5 @@
-Packer Demo
+HUG Packer Demo
+================
 
 ## Init
 
@@ -10,7 +11,7 @@ make init
 
 ## Create or update image
 
-To create or update an image tag, execute (i.e.: to build cli image):
+To create or update an image tag, execute (i.e.: to build cli image):  
 **IMPORTANT**: If the packer template have a Docker Push post-processor, execute `docker login` in order to 
 login to Docker Hub before building the image. 
 
