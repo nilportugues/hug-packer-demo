@@ -19,4 +19,4 @@ php-vagrant:
 
 .PHONY: init
 init:
-	ansible-galaxy install -p ansible/galaxy -r ansible/requirements.yml
+	ansible-galaxy install -p provisioners/ansible/galaxy -r provisioners/ansible/requirements.yml
