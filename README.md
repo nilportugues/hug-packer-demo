@@ -16,5 +16,5 @@ To create or update an image tag, execute (i.e.: to build cli image):
 login to Docker Hub before building the image. 
 
 ```bash
-make cli
+make php-docker
 ```

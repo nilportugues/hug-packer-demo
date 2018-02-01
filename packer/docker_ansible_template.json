@@ -2,8 +2,7 @@
   "description": "This template is to build images using ansible as provisioner and docker as a builder. It generates a docker image, tags it and pushes it to Docker Hub",
   "variables": {
     "ansible_host": "default",
-    "ansible_connection": "docker",
-    "ansible_roles_path": "{{template_dir}}/../provisioners/ansible/galaxy"
+    "ansible_connection": "docker"
   },
   "builders": [
     {
@@ -28,7 +27,7 @@
       "user": "root",
       "playbook_file": "{{template_dir}}/{{ user `ansible_playbook` }}",
       "ansible_env_vars": [
-        "ANSIBLE_ROLES_PATH={{user `ansible_roles_path` }}"
+        "ANSIBLE_ROLES_PATH={{template_dir}}/{{user `ansible_roles_path`}}"
       ],
       "extra_arguments": [
         "--extra-vars",

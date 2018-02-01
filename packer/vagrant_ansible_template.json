@@ -4,12 +4,12 @@
     "build_memory": "2048",
     "memory": "1024",
     "build_cpu_cores": "2",
-    "cpu_cores": "1",
-    "ansible_roles_path": "{{template_dir}}/../provisioners/ansible/galaxy"
+    "cpu_cores": "1"
   },
   "builders": [
     {
       "type": "virtualbox-iso",
+      "vm_name": "{{user `name`}}",
       "boot_command": [
         "<enter><wait>",
         "<f6><esc>",
@@ -88,7 +88,7 @@
       "type": "ansible",
       "playbook_file": "{{template_dir}}/{{user `ansible_playbook`}}",
       "ansible_env_vars": [
-        "ANSIBLE_ROLES_PATH={{user `ansible_roles_path` }}"
+        "ANSIBLE_ROLES_PATH={{template_dir}}/{{user `ansible_roles_path`}}"
       ],
       "user": "vagrant",
       "extra_arguments": [

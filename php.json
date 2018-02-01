@@ -1,6 +1,9 @@
 {
 
+  "name": "php",
+
   "ansible_playbook": "../provisioners/ansible/playbooks/php.yml",
+  "ansible_roles_path": "../provisioners/ansible/galaxy",
   "docker_image": "viscat/packer-demo",
   "docker_image_tag": "php",
   "docker_base_image": "viscat/php:essential",

@@ -1,12 +1,6 @@
-_TEXT_PACKER='Insert a pattern ("*" for all): '
-
-_PATH_PACKER=packer/$(PATTERN).json
-
-_PACKER_BUILD=packer build $(file);
-
-_packer:
-	$(eval PATTERN=$(shell read -p $(_TEXT_PACKER) pattern; echo "$$pattern"))
-	$(foreach file,$(sort $(wildcard $(_PATH_PACKER))),$(_PACKER_BUILD))
+.PHONY: init
+init:
+	ansible-galaxy install -p provisioners/ansible/galaxy -r provisioners/ansible/requirements.yml
 
 .PHONY: php-docker
 php-docker:
@@ -16,7 +10,6 @@ php-docker:
 php-vagrant:
 	packer build -var-file=php.json packer/vagrant_ansible_template.json
 
-
-.PHONY: init
-init:
-	ansible-galaxy install -p provisioners/ansible/galaxy -r provisioners/ansible/requirements.yml
+.PHONY: php-aws
+php-aws:
+	packer build -var-file=php.json packer/aws_ansible_template.json
